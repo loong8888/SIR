@@ -26,7 +26,12 @@ Deep learning has demonstrated its power in image rectification by leveraging th
 ## Method
 ![](files/NN.png)
 <p align="justify"> 
-Prevalent visual grounding methods are all limited to the segmentation level, probably due to the lack of high-quality datasets for RIM. To fill the gap, we establish the first large-scale challenging dataset <strong>RefMatte</strong> by designing a comprehensive image composition and expression generation engine to produce synthetic images on top of current public high-quality matting foregrounds with flexible logics and re-labelled diverse attributes. RefMatte consists of <strong>230</strong> object categories, <strong>47,500</strong> images, <strong>118,749</strong> expression-region entities, and <strong>474,996</strong> expressions, which can be further extended easily in the future. Besides this, we also construct a real-world test set with manually generated phrase annotations consisting of 100 natural images to further evaluate the generalization of RIM models. We show some examples of our RefMatte train and test set as follows, including the images, the alpha mattes and the input texts.
+Unlike existing supervised methods, the proposed self-supervised method does not need any ground truth distortion parameters, distortion field, or the normal image to train the network. The 
+framework is illustrated in the above figure. During training, $s$ distorted images are synthesized from one normal image realB using d distortion models, so totally there will be d ∗ s images in 
+each batch. For clarity, we only show two samples for each model here, as in our experiment setting. Each head shares the same distortion
+model (in the same color). The input images are fed into a shared encoder, i.e. ResNet-50. Next, the prediction head for each model (i.e. hi) predicts the distortion parameters (i.e. Ki) under 
+that distortion model (i.e. Di) accordingly. Finally, the forward warping module (i.e. fi) generates the rectified images (e.g. Bi). A1 i means the sample is under distortion model Di with 
+parameter k1. Similarly, ki1 is the distortion parameter k1 defined under model Di. Bi1 is the rectified result of $A^1_i$.
 </p>
 
 
@@ -47,7 +52,7 @@ We show some examples of our test results on RefMatte test set and RefMatte-RW10
 
 If you are interested in our work, please consider citing the following:
 ```
-@article{jfan2022sir,
+@article{jfan2021sir,
   title={SIR: Self-supervised Image Rectification via Seeing the Same Scene from Multiple Different Lenses},
   author={Jinlong Fan and Jing Zhang and Dacheng Tao},
   journal={ArXiv},
