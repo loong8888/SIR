@@ -27,20 +27,21 @@ Deep learning has demonstrated its power in image rectification by leveraging th
 ![](files/NN.png)
 <p align="justify"> 
 Unlike existing supervised methods, the proposed self-supervised method does not need any ground truth distortion parameters, distortion field, or the normal image to train the network. The 
-framework is illustrated in the above figure. During training, $s$ distorted images are synthesized from one normal image realB using d distortion models, so totally there will be d ∗ s images in 
-each batch. For clarity, we only show two samples for each model here, as in our experiment setting. Each head shares the same distortion
-model (in the same color). The input images are fed into a shared encoder, i.e. ResNet-50. Next, the prediction head for each model (i.e. hi) predicts the distortion parameters (i.e. Ki) under 
-that distortion model (i.e. Di) accordingly. Finally, the forward warping module (i.e. fi) generates the rectified images (e.g. Bi). A1 i means the sample is under distortion model Di with 
-parameter k1. Similarly, ki1 is the distortion parameter k1 defined under model Di. Bi1 is the rectified result of $A^1_i$.
+framework is illustrated in the above figure. During training, $s$ distorted images are synthesized from one normal image $realB$ using $d$ distortion models, so totally there will be $d ∗ s$ 
+images in each batch. For clarity, we only show two samples for each model here, as in our experiment setting. Each head shares the same distortion model (in the same color). The input images are 
+fed into a shared encoder, i.e. ResNet-50. Next, the prediction head for each model (i.e. $h_i$) predicts the distortion parameters (i.e. $K_i$) under 
+that distortion model (i.e. $D_i$) accordingly. Finally, the forward warping module (i.e. $f_i$) generates the rectified images (e.g. $B_i$). $A^1_i$ means the sample is under distortion model $D_i$ 
+with 
+parameter $k^1$. Similarly, $k_i^1$ is the distortion parameter $k^1$ defined under model $D_i$. $B_i^1$ is the rectified result of $A^1_i$.
 </p>
 
 
-
-We also generate the wordcloud of the prompts, attributes and relationships in RefMatte as belows. As can be seen, the dataset has a large portion of human and animals since they are very common in the image matting task. The most frequent attributes in RefMatte are *male, gray, transparent,* and *salient*, while the relationship words are more balanced.
+Although there is no limit of the number of distortion models and distorted images in each group in our framework, we choose $d=3$ typical models, \ie $D_1$ - the <strong> FOV </strong> distortion model (denoted as 'FOV'), $D_2$ - the one parameter <strong>D</strong>ivision <strong>M</strong>odel (denoted as 'DM'), and $D_3$ - the  <strong>E</strong>qui<strong>D</strong>istant distortion model (denoted as 'ED'), and synthsize $s=2$ samples for each model in our setting. Each of the selected models has a single parameter and an invertible forward (distorted$\rightarrow$normal) warping function and differentiable backward (normal$\rightarrow$distorted) function.
 
 ## Results
 
-We show some examples of our test results on RefMatte test set and RefMatte-RW100 by our CLIPIMat given text inputs and the images under both prompt- and expression- based setting.
+The quantitative results and the visual results are given below. Without any ground truth supervision, SIR achieves comparable or even better results than typical traditional methods and SOTAs of 
+deep learning methods. More results and details about our experiment and setting can be found in the paper.
 
 <img src="files/metrics.png">
 <img src="files/metrics_2.png">
