@@ -38,8 +38,8 @@ parameter $k^1$. Similarly, $k_i^1$ is the distortion parameter $k^1$ defined un
 
 Although there is no limit of the number of distortion models and distorted images in each group in our framework, we choose $d=3$ typical models, i.e. $D_1$ - the <strong> FOV </strong> distortion 
 model (denoted as 'FOV'), $D_2$ - the one parameter <strong>D</strong>ivision <strong>M</strong>odel (denoted as 'DM'), and $D_3$ - the  <strong>E</strong>qui<strong>D</strong>istant distortion 
-model (denoted as 'ED'), and synthsize $s=2$ samples for each model in our setting. Each of the selected models has a single parameter and an invertible forward (distorted $\rightarrow$ normal) 
-warping function and differentiable backward (normal $\rightarrow$ distorted) function.
+model (denoted as 'ED'), and synthsize $s=2$ samples for each model in our setting. Each of the selected models has a single parameter and an invertible forward (distorted to normal) 
+warping function and differentiable backward (normal to distorted) function.
 
 ## Results
 
